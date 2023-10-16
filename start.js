@@ -1,8 +1,8 @@
 // Manipulate the title of the page and experiment with other things
-console.dir(document.getElementsByClassName);
+//console.dir(document.getElementsByClassName);
 //console.log(document.title);
-//var headerTitle=document.getElementById("header-title");
-//console.log(headerTitle);
+var headerTitle=document.getElementById("header-title");
+console.log(headerTitle);
 //console.log(headerTitle.textContent); //Item Lister 123
 //console.log(headerTitle.innerText);  //Item Lister
 //headerTitle.textContent='Hello';
