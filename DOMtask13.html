@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h2 > User Details</h2>
+     <div class="container" id="forms" >
+     <form onsubmit="saveToLocalStorage(event)">
+        <label >Name</label>
+        <input type="text" name="username" required/>
+        <label >Email ID</label>
+        <input type="email" name="emailId"  required/>
+        <label >Phone Number</label>
+        <input type="tel" name="phonenumber"/>
+        <button>Submit</button>
+     </form>
+    </div>
+    <ul id="listOfItems"></ul>
+     <script>
+        function saveToLocalStorage(event){
+            event.preventDefault();
+           const email=event.target.emailId.value;
+           const name=event.target.username.value;
+           const phonenumber=event.target.phonenumber.value;
+           const newUser={
+            name,
+            email,
+            phonenumber
+           }
+           localStorage.setItem(newUser.email,JSON.stringify(newUser));
+           showOnUserScreen(newUser);
+        }
+        function showOnUserScreen(newUser){
+            const parentElmt=document.getElementById('listOfItems');
+            const childElmt=document.createElement('li');
+           childElmt.textContent= newUser.name+" - "+newUser.email+" - "+newUser.phonenumber;
+          const delBtn=document.createElement('input');
+          delBtn.type='button';
+          delBtn.value='Delete';
+          delBtn.onclick= () =>{
+            localStorage.removeItem(newUser.email);
+            parentElmt.removeChild(childElmt);
+          }
+          childElmt.appendChild(delBtn);
+          parentElmt.appendChild(childElmt);
+         
+        }
+
+     </script>
+    </body>
+</html>
+</body>
+</html>
