@@ -61,6 +61,7 @@
           
         })
         function showOnUserScreen(newUser){
+
             const parentElmt=document.getElementById('listOfItems');
             const childElmt=document.createElement('li');
            childElmt.textContent= newUser.name+" - "+newUser.email+" - "+newUser.phonenumber;
@@ -68,8 +69,13 @@
           delBtn.type='button';
           delBtn.value='Delete';
           delBtn.onclick= () =>{
-            localStorage.removeItem(newUser.email);
-            parentElmt.removeChild(childElmt);
+            axios.delete(`https://crudcrud.com/api/c29e9360ea72483392aa45a86701625b/appointmentData/${newUser._id}`)
+               .then(() =>{
+                parentElmt.removeChild(childElmt);
+               })
+                .catch((error) => {
+                  console.log(error);
+                })
           }
           childElmt.appendChild(delBtn);
 
