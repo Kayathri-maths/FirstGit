@@ -46,17 +46,20 @@
           //  showOnUserScreen(newUser);
           
         }
-        // window.addEventListener("DOMContentLoaded",() => {
-        //   const localStorageObj=localStorage;
-        //   const localStoragekeys=Object.keys(localStorageObj);
+        window.addEventListener("DOMContentLoaded",() => {
+         axios.get("https://crudcrud.com/api/c29e9360ea72483392aa45a86701625b/appointmentData")
+         .then((response) => {
+          console.log(response);
 
-        //   for(let i=0;i<localStoragekeys.length;i++){
-        //     const key=localStoragekeys[i];
-        //     const userDetailsString=localStorageObj[key];
-        //     const userDetailsObj=JSON.parse(userDetailsString);
-        //     showOnUserScreen(userDetailsObj);
-        //   }
-        // })
+          for(let i=0;i<response.data.length;i++){
+          showOnUserScreen(response.data[i]);
+        }
+         })
+         .catch((error) => {
+          console.log(error);
+         })
+          
+        })
         function showOnUserScreen(newUser){
             const parentElmt=document.getElementById('listOfItems');
             const childElmt=document.createElement('li');
