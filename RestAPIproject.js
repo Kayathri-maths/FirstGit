@@ -148,9 +148,9 @@ function deleteItem(itemId){
 
      removeItem(itemId);
   })
-  .catch( (error) => {
+  .catch( (err) => {
    document.body.innerHTML+="<h4>Something Went Wrong</h4>"
-   console.log(error)
+   console.log(err)
   })
 }
 
